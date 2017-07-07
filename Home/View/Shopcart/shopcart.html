@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.shopcart"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="shopcart">
+	<div id="shopcart">
+		<div class="cartTitle">
+			<li>我的购物车</li>
+			<li>查看购物车商品清单，增加减少商品数量，并勾选想要的商品进入下一步操作。</li>
+		</div>
+		<div class="goodsList">
+			<table  class="listTable">
+				<tr class="listTitleTr">
+					<td class="title1">
+						<input type="checkbox" name="" class="titleCheck">&nbsp&nbsp&nbsp选择
+					</td>
+					<td class="title2">商品</td>
+					<td class="title3">单价(元)</td>
+					<td class="title4">数量</td>
+					<td class="title5">小计</td>
+					<td class="title6">操作</td>
+				</tr>
+			</table>				
+<!--_________________________________________________-->	
+			<div class="allGoods">			
+			
+			<notempty name="good">
+
+				<foreach name="good" item="go">
+				<ul class="listContent">
+					<li class="li1">
+						<input type="checkbox" name="" id="" class="contentCheck">
+					</li>
+					<li class="li2">
+						<a class="li2-a" href="" >
+							<img src="{$go['goods_img']}" >
+						</a>
+						<span class="li2-span">
+							<a href="">
+								 {$go['goods_name']}
+							</a>
+							<div>选择分类： 联通制定版</div>
+						</span>	
+					</li>
+					<li class="li3"><b class="li3-b">{$go['shop_price']}</b>(元)</li>
+					<li class="li4">
+						<div class="li4-view">
+							<div class="view">{$go['quantity']}</div>
+							<a class="item" href="javascript:void(0);" >编辑</a>
+						</div>
+						<div class="li4-item" >
+							<a class="sub" href="javascript:void(0);" >-</a>
+							<input type="text" name="" class="num" value="{$go['quantity']}">
+							<a class="add" href="javascript:void(0);" >+</a>
+							<a class="back" href="javascript:void(0);" >返回</a>
+							<a class="save" href="javascript:void(0);" >保存</a>
+						</div>	
+						<div class="stock" value="500">可填范围(1~999)</div>
+					</li>
+					<li class="li5"><b class="li5-b"></b>(元)</li>
+					<li class="li6" value="{$go['shopcart_id']}">
+						<a href="javascript:void(0)" class="delete">
+							<i class="fa fa-close"></i>
+						</a>
+					</li>
+				</ul>
+				</foreach>
+
+			<else />			
+			<div class="none">
+			 购物车没商品
+			</div>	
+			</notempty>
+
+			</div>
+		</div>
+		<div class="buyInfo">
+			<li class="choose">
+				已选择&nbsp
+					<b class="b">0</b>
+				&nbsp件商品
+			</li>
+			<form action="{:U('Home/Confirm/confirm')}" method="post" id="buyForm" >
+					<input type="hidden" id="buyHidden" name="shopcart" value=''>
+					<input type="submit" id="buyForm_a"  value="请选择商品">		
+			</form>
+			<li class="total" >
+				商品总价（不含运费)&nbsp&nbsp
+					<b class="total-b">0</b>
+				&nbsp&nbsp元
+			</li>
+		</div>		
+	</div>
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/shopcart.js"></script>
+</html>

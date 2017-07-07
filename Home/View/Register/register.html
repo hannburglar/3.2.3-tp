@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.register"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="form">
+	<div id="form">
+		<form action="" method="post">
+			<input type="text" name="user" placeholder="账号" autofocus class="input" id="user">
+			<input type="password" name="password" placeholder="密码"  class="input" id="password">	
+			<input type="password" name="repassword" placeholder="确认密码"  class="input" id="repassword">	
+			<input type="email" name="email" placeholder="邮箱"  class="input" id="email">	
+			<input type="phone" name="phone" placeholder="手机"  class="input" id="phone">
+			<button type="submit">注&nbsp册</button>
+			<a href="{:U('/Home/Login/login')}">直接登录></a>
+		</form>
+		<div class="prompt">
+			<div class="cuser">*</div>
+			<div class="cpassword">*</div>
+			<div class="crepassword">*</div>
+			<div class="cemail"></div>
+			<div class="cphone">*</div>
+		</div>
+		
+	</div>
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/register.js"></script>
+</html>

@@ -1,0 +1,45 @@
+
+<!--____________________大LOGO,搜索栏,购物车___________________-->
+
+	<div class="searchbar">
+		<ul>
+			<li class="searchbar-logo">
+				<a href="{:U('Home/Home')}"><img src="__PUBLIC__/Home/images/tarlton logo.jpg" class="logo"></a>
+			</li>
+			<li class="searchbar-form">
+				<table>
+					<tr>
+						<form action="">
+							<input id="searchbar-input" type="text" name="" value="" placeholder="搜索框">
+							<button type="submit">搜索</button>
+						</form>
+					</tr>
+					<tr>
+						<p>袋泡茶&nbsp果露&nbsp金香柚子茶</p>
+					</tr>
+				</table>
+			</li>
+			<li class="shopart">
+				<a href="">
+					<span class="fa fa-shopping-cart fa-2x"></span> 
+					<span>我的购物车</span>
+				</a>
+				<!--想要出现效果必须给出现的元素设置专门的class或id-->
+				<div class="shopart-appear">购物车清单</div>
+			</li>
+		</ul>
+	</div>
+
+<!--____________________导航栏___________________-->
+
+	<nav class="headernav">
+		<ul>
+			<li id="headernav-all"  ><a href="{:U('/Home/Goods/goods')}">&nbsp&nbsp&nbsp<ol class="fa fa-list-ul"></ol>&nbsp&nbsp&nbsp&nbsp所有产品</a></li>
+			<li><a href="">进口红茶</a></li>
+			<li><a href="">咖啡豆</a></li>
+			<li><a href="">美域糖浆</a></li>
+			<li><a href="">进口洋酒</a></li>
+			<li><a href="">韩国蜂蜜茶</a></li>
+			<li><a href="">海底壹号</a></li>
+		</ul>
+	</nav>

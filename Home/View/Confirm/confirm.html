@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.confirm"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="confirm">
+	<div id="confirm">
+		<div class="address">
+			<div class="add-header">
+				<div>确认收货地址</div>
+				<a href="{:U('/Home/Member/member_address')}"  target="_blank">新增、管理收货地址</a>
+			</div>
+			<div class="add-content">
+				<if condition="$address eq array('')" >
+					<div class="add-none">没有收货地址</div>
+				<else />
+					<foreach name="address" item="ad">
+						<ul class="addContentUl">
+							<li class="addLi1"></li>
+							<li class="addLi2" value="{$ad['ad_default']}">
+								<input type="radio" name="ad_default" >
+							</li>
+							<li class="addLi3">
+								{$ad['ad_address']}
+								<span>&nbsp（{$ad['ad_consignee']} 收）</span>
+								<span>&nbsp{$ad['ad_phone']}</span>
+							</li>
+							<li class="addLi4" value="{$ad['ad_default']}"></li>
+							<li class="addLi5" value="{$ad['address_id']}"></li>	<!-- <a href="" class="addLi5_a">修改本地址</a> -->
+						</ul>
+					</foreach>
+				</if>
+				<!-- <div class="add-new">
+					<button>使用新地址</button>
+				</div> -->
+			</div>
+		 	<div class="editBox">
+					<div class="addressEdit">
+						<a class="editExit" href="javascript:void(0)" >
+							<i class="fa fa-remove"></i>
+						</a>
+						
+						<form class="addressEdit_form">
+							<p class="addressEdit_form_p1">
+								<span>详细地址&nbsp:</span>
+								<textarea name="" id="addressEdit_p1_t" cols="50" rows="10" name="ad_addres"></textarea>
+							</p>
+							<p class="addressEdit_form_p2">
+								<span>收货人&nbsp:</span>
+								<input type="text" name="ad_consignee" id="addressEdit_p2_i" >
+							</p>
+							<p class="addressEdit_form_p3">
+								<span>电话&nbsp:</span>
+								<input type="text" name="ad_phone" id="addressEdit_p3_i" >
+							</p>
+							<p class="addressEdit_form_p4" >
+								<input type="button" name="" value="确定" id="addressEdit_p4_b">
+								<!-- <button type="button" id="addressEdit_p4_b" value="">保存</button> -->
+							</p>
+						</form>
+						
+					</div>
+			</div> 		
+		</div>
+		<div class="order">
+			<div class="or-header">
+				<div>确认订单信息</div>
+			</div>
+			<div class="or-title">
+				<ul class="orTitleUl">
+					<li class="oTitLi1">商品信息</li>
+					<li class="oTitLi2">商品属性</li>
+					<li class="oTitLi3">单价</li>
+					<li class="oTitLi4">数量</li>
+					<li class="oTitLi5">优惠方式</li>
+					<li class="oTitLi6">小计</li>
+				</ul>
+			</div>
+				<div class="or-content">
+				<foreach name="good" item="go">
+					<ul class="orContentUl">
+						<li class="oConLi1">
+							<img src="{$go['thumb_img']}" alt="">
+							<div>
+								{$go['goods_name']}
+							</div>
+						</li>
+						<li class="oConLi2">分类&nbsp:全网通</li>
+						<li class="oConLi3">{$go['shop_price']}</li>
+						<li class="oConLi4">{$go['quantity']}</li>
+						<li class="oConLi5">无优惠</li>
+						<li class="oConLi6"></li>
+					</ul>
+				</foreach>
+				</div>
+		</div>
+
+		<div class="button">
+			<form class="button-form" action="{:U('Home/order/getPost')}" method="post">
+				<div class="orContentDiv">
+					<div class="remark">
+						<span>给卖家留言:</span>
+							<textarea rows="2" cols="50" placeholder="选填" name="message"></textarea>
+						
+					</div>
+					<div class="express">
+						<div class="expDiv1">
+							<span>运送方式:</span>
+							<span>普通快递 免邮</span>
+							<span class="expressFee"><i class="fa fa-cny">&nbsp</i>0.00</span>
+						</div>
+						<div class="expDiv2">
+							<span>发货时间:</span>
+							<span>48小时内发货</span>
+						</div>
+						<div class="expDiv3">
+							<span>0</span>
+							<span>合计(含运费)&nbsp:&nbsp&nbsp<i class="fa fa-cny">&nbsp</i></span>
+						</div>
+					</div>
+				</div>
+				<div class="buttonDiv">
+					<div class="bu-info">
+						<div class="infoDiv1" >
+							<div class="infoDiv1_1">
+							</div>
+							<div class="infoDiv1_2">
+								实付款:&nbsp&nbsp
+								<i class="fa fa-cny">&nbsp</i>
+							</div>
+						</div>
+						<div class="infoDiv2" >
+							<div>{$def['ad_address']}</div>
+							<div>寄送至:&nbsp&nbsp</div>
+						</div>
+						<div class="infoDiv3" >
+							<div>{$def['ad_consignee']}&nbsp&nbsp{$def['ad_phone']}</div>
+							<div>收货人:&nbsp&nbsp</div>
+						</div>
+					</div>
+					<div class="bu-button" >
+						<a href="{:U('Home/Shopcart/shopcart')}">
+							<i class="fa fa-reply"></i>
+							&nbsp返回购物车
+						</a>
+						<input type="hidden"  name="json" value='{$json}'>
+						<a href="javascript:void(0)" class="bu-button_a2" type="submit">提交订单</a>
+					</div>
+				</div>
+			</form>	
+		</div>
+	</div>	
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/confirm.js"></script>
+</html>

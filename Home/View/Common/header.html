@@ -1,0 +1,90 @@
+
+<!--____________________右边栏___________________-->
+
+	<div class="rsidebar">
+		<div id="rsbar-profile" class="rsbar">
+			<li class="fa fa-user-o fa-2x"></li>
+			<li id="rsbar-profile-appear">
+				<a href="">我的资料</a>
+			</li>
+		</div>
+		<div id="rsbar-favorite" class="rsbar">
+			<li class="fa fa-star-half-empty fa-2x"></li>
+			<li id="rsbar-favorite-appear">
+				<a href="">我的收藏</a>
+			</li>
+		</div>
+		<div id="rsbar-shopart" class="rsbar">
+			<li class="fa fa-shopping-cart fa-2x">
+				<span><br><br><br>购<br>物<br>车<br><br>
+					<a id="cart" href="{:U('Home/Shopcart/shopcart')}">0</a>
+				</span>
+			</li>
+		</div>
+		<div id="rstouch" class="rsbarBank">
+			<!-- <br><br>右<br>边<br>栏<br>
+			<i class="fa fa-angle-double-left" id="rstouch-left"></i>
+			<i class="fa fa-angle-double-right" id="rstouch-right"></i>
+			<br><br>右<br><br><br> -->
+		</div>
+		<div id="rsbar-messageBoard" class="rsbar">
+			<li class="fa fa-file-o fa-2x"></li>
+			<li id="rsbar-messageBoard-appear">
+				<a href="">留言</a>
+			</li>
+		</div>
+		<div id="rsbar-QRcode" class="rsbar">
+			<li class="fa fa-qrcode fa-2x"></li>
+			<li id="rsbar-QRcode-appear">
+				<img src="__PUBLIC__/Home/images/timg.gif" >
+			</li>
+		</div>
+		<div id="rsbar-BackToTop" class="rsbar">
+			<a href="#header">
+				<li class="fa fa-angle-double-up fa-2x"></li>
+			</a>
+			<li id="rsbar-BackToTop-appear">
+				<a href="#header">回到顶部</a>
+			</li>
+		</div>
+	</div>
+<!--____________________右隐藏边栏___________________-->
+
+	<div class="rsidehidden">	
+		<div class="r-sCart">
+			<span  class="r-sCartSpan">
+				<a href="{:U('Home/Shopcart/shopcart')}">去查看购物车</a>
+			</span>
+			<div id="r-sCart">	
+			</div>
+		</div>	
+	</div>
+<!--____________________右边栏弹出时候遮盖层___________________-->
+<!-- 	<div id="cover">
+	</div>
+ -->
+<!--____________________页头栏(顶部)___________________-->
+	
+	<header>
+		<div id="header">
+			<div class="header-left">
+				<ul>
+					<if condition="checkSession()">
+						<li>Hi!欢迎&nbsp<a href="{:U('Home/Member/member_order')}"><b>{$Think.session.user}</b></a</li>
+						<li><a href="{:U('Home/Login/loginout')}">退出</a></li>
+					<else /> 
+						<li><a href="{:U('Home/Login/login')}">登陆</a></li>
+						<li><a href="{:U('Home/Register/register')}">注册</a></li>
+					</if>
+				</ul>
+			</div>
+			<div class="header-right">
+				<ul>
+					<li class="header-right_li_1"><a href="{:U('Home/Shopcart/shopcart')}">购物车&nbsp<b class="header-right_li1_b"></b>&nbsp件</a></li>
+					<li><a href="{:U('Home/Member/member_order')}">我的订单</a></li>
+					<li><a href="">我的收藏</a></li>
+					<li><a href="">客户服务</a></li>
+				</ul>
+			</div>
+		</div>	
+	</header>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="__PUBLIC__/js/jquery.js"></script>
+	<script src="__PUBLIC__/Home/js/common/header.js"></script>
+	<script src="__PUBLIC__/Home/js/goods.js"></script>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.common.page"/>	<!--引入index部分CSS-->
+	<import type='css' file="Home.css.goods"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+	<div class="goods">
+		<div id="goods">
+<!--_________topSide___上边栏____分类___________-->		
+			<div class="topSide">
+				<ul>
+					<ol><i class="fa fa-home">&nbsp</i>首页</ol>
+					&nbsp>&nbsp<li>所有分类</li>
+					<foreach name="bread" item="br">	
+						&nbsp>&nbsp<li><a href="?cat_id={$br['cat_id']}">{$br[cat_name]}</a></li>
+					</foreach>
+				</ul>
+			</div>
+<!--_________leftSide___左边栏____产品类目___________-->			
+			<div class="leftSide">
+				<div class="catsheader">产品分类</div>
+				<div class="catslist">
+					
+							<ul class="level0"> 
+								{$a}
+							</ul>
+						
+					
+			
+				</div>
+				<div class="sercenter">
+					<div class="one">&nbsp&nbsp&nbsp&nbsp&nbsp在线客服</div> 
+					<div class="two">&nbsp&nbsp&nbsp&nbsp&nbsp<i class=" fa fa-qq">&nbsp:&nbsp</i>客服</div>
+					<div class="three">&nbsp&nbsp<i class="fa fa-clock-o"></i>&nbsp工作时间</div>
+					<div class="four">&nbsp&nbsp&nbsp&nbsp&nbsp周一至周六&nbsp:&nbsp9:30-17:30</div>
+					<div class="five">&nbsp&nbsp<i class="fa fa-commenting"></i>&nbsp联系方式</div>
+					<div class="six">&nbsp&nbsp&nbsp&nbsp&nbsp电话&nbsp:&nbsp400-666-666</div>
+				</div>
+			</div>
+
+<!--_________rightSide___右边栏___产品主图展示____________-->
+			
+			<div class="rightSide">
+				<div class="catsnav">
+					<li>排序方式&nbsp:</li>
+					<span>默认&nbsp</span>
+					<span>销量&nbsp<i class="fa fa-arrow-down"></i></span>
+					<span>人气&nbsp<i class="fa fa-arrow-down"></i></span>
+					<span>价格&nbsp<i class="fa fa-arrow-down"></i></span>
+					<div>
+						<foreach name='page' item='pa'>
+							<li style="display:inline-block;">&nbsp&nbsp{$pa}&nbsp&nbsp</li>
+						</foreach>
+					</div>
+					
+				</div>
+				<div class="squares">
+					<foreach name="goods" item="go">
+					<li class="squaresitem">
+						<div class="itemimg">
+							<div class="bigimgdiv">    
+        						<a href="{:U('Home/Detail/detail')}?goods_id={$go[goods_id]}"><img class="bigimg" src="{$go[goods_img]}"></a>
+        					</div>
+        					<div class="smallimgdiv">
+				                <img class="smallimage"  src="{$go[thumb_img]}" bigimageURL="{$go[goods_img]}">
+				               <!--  <img   class="smallimage" src="http://how2j.cn/tmall/img/productSingle_small/8619.jpg" bigimageURL="http://how2j.cn/tmall/img/productSingle/8619.jpg">
+				                <img   class="smallimage" src="http://how2j.cn/tmall/img/productSingle_small/8618.jpg" bigimageURL="http://how2j.cn/tmall/img/productSingle/8618.jpg">
+				                <img  width="100px" class="smallimage" src="http://how2j.cn/tmall/img/productSingle_small/8618.jpg" bigimageURL="http://how2j.cn/tmall/img/productSingle/8618.jpg">
+		               			<img  width="100px" class="smallimage" src="http://how2j.cn/tmall/img/productSingle_small/8617.jpg" bigimageURL="http://how2j.cn/tmall/img/productSingle/8617.jpg">     -->  
+       					 	</div>
+   					 	</div>
+   					 	<div class="iteminfo">
+   					 		<div class="infotitle"><a href="{:U('Home/Detail/detail')}?goods_id={$go[goods_id]}">{$go[goods_name]}</a></div>
+   					 		<div class="infoprice"><i class="fa fa-rmb" style=""></i>{$go[shop_price]}</div>
+   					 	</div>
+   					 	<div class="itembutton">
+							<div class="throwincart">加入购物车</div>
+							<div class="buynow">立即购买</div>
+   					 	</div>
+					</li>
+					</foreach>			
+				</div>
+			<div  class="fenye" style="width:900px;height:50px;float:left;margin-top:50px;">
+				<div style="float:right;">
+					<foreach name='page' item='pa'>
+						<li style="display:inline-block;">&nbsp&nbsp{$pa}&nbsp&nbsp</li>
+					</foreach>
+				</div>	
+			</div >
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.Order_closed"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="orderdetail">
+	<div id="orderdetail">
+		<div class="ordStatus">
+			<div class="ordStatus_closed">订单状态&nbsp:&nbsp订单已关闭</div>
+		</div>
+		<div class="ordInfo">
+			<div class="ordHeader">订单信息</div>
+			<div class="ordAddress">
+				<div>收货地址：{$order[0]['order_address']} </div>
+				<div>运送方式：快递</div>
+			</div>
+			<div class="orderInfo">
+				<div class="record">订单数据</div>
+				<ul class="ordInfoUl">
+					<li class="ordInfoLi1">订单编号: <b>{$order[0]['order_sn']}</b> </li>
+					<li class="ordInfoLi2">创建时间: <b class="ordInfoLi2_b">{$date}</b> </li>
+					
+				</ul>
+			</div>
+			<div class="or-title">
+				<ul class="orTitleUl">
+					<li class="oTitLi1">商品信息</li>
+					<li class="oTitLi2">商品属性</li>
+					<li class="oTitLi3">单价</li>
+					<li class="oTitLi4">数量</li>
+					<li class="oTitLi5">优惠方式</li>
+					<li class="oTitLi6">小计</li>
+				</ul>
+			</div>
+			<div class="or-content">
+			<foreach name="order" item="or">	
+				<ul class="orContentUl">
+					<li class="oConLi1">
+						<img src="{$or['thumb_img']}" alt="">
+						<div>
+							{$or['goods_name']}
+						</div>
+					</li>
+					<li class="oConLi2">分类&nbsp:全网通</li>
+					<li class="oConLi3">{$or['shop_price']}</li>
+					<li class="oConLi4">{$or['order_quantity']}</li>
+					<li class="oConLi5">无优惠</li>
+					<li class="oConLi6"></li>
+				</ul>
+			</foreach>	
+			</div>
+		</div>
+	</div>	
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/Order_unpaid.js"></script>
+</html>

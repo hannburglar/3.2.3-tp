@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.member"/>	<!--引入index部分CSS-->
+	<import type='css' file="Home.css.member_address"/>	<!--引入index部分CSS-->
+	<import type='css' file="Home.css.member_order"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="member">
+	<div id="member">
+		<div class="leftSide">
+			<div class="userInfo">
+				<div class="infoTitle">
+					这里写用户名
+				</div>
+				<div class="infoContent">
+					<li class="infoContentLi">修改资料</li>
+					<li class="infoContentLi">安全退出</li>
+				</div>
+			</div>
+			<div class="trade">
+				<div class="tradeTitle" >交易管理
+					<i class="fa fa-angle-up" ></i>
+					<i class="fa fa-angle-down" id="i"></i>
+				</div>
+				<li class="tradeTitleLi"><a href="{:U('/Home/Member/member_order')}">我的订单</a></li>
+				<li class="tradeTitleLi">收货地址</li>
+				<li class="tradeTitleLi">我的收藏</li>
+				<li class="tradeTitleLi">退款及退货</li>
+				<li class="tradeTitleLi">交易评价</li>
+			</div>
+		</div>
+		<div class="rightSide">
+			<div class="address">
+				<div class="ad_addTitle">已经保存&nbsp{$count}&nbsp条地址,最多可以保存&nbsp10&nbsp条地址</div>
+				<div class="ad_addItem">
+					<ul class="ad_addItemTitleUl">
+						<li class="ad_addItemTitleLi_1">地址</li>
+						<li class="ad_addItemTitleLi_2">收货人</li>
+						<li class="ad_addItemTitleLi_3">电话</li>
+						<li class="ad_addItemTitleLi_4">操作</li>
+					</ul>
+					<table class="ad_addItemContentTable">
+					<foreach name="address" item="ad">
+						<tr class="ad_addItemContentTr">
+
+							<td class="ad_addItemConTd_1">
+								<span>{$ad[ad_address]}</span>
+								<textarea class="ad_addItemConTd_1_text" 
+							 name="ad_address" id="" cols="35" rows="3">{$ad[ad_address]}</textarea>
+							</td>
+
+							<td class="ad_addItemConTd_2">
+								<span>{$ad[ad_consignee]}</span>
+								<input class="ad_addItemConTd_2_inp"  type="text" name="ad_consignee" value="{$ad[ad_consignee]}">
+							</td>
+
+							<td class="ad_addItemConTd_3">
+								<span>{$ad[ad_phone]}</span>
+								<input class="ad_addItemConTd_3_inp"  type="text" name="ad_phone" value="{$ad[ad_phone]}">
+							</td>
+
+							<td class="ad_addItemConTd_4" value="{$ad[address_id]}">
+								<div class="ad_addItemConTd_4_div1">
+									<a class="ad_addItemConTd_4_edit" href="javacript:void(0)">修改</a>&nbsp|
+									<a class="ad_addItemConTd_4_del" href="javacript:void(0)">删除</a>
+								</div>	
+								<div class="ad_addItemConTd_4_div2">
+									<a class="ad_addItemConTd_4_save" href="javacript:void(0)">保存</a>
+									<a class="ad_addItemConTd_4_cancel" href="javacript:void(0)">取消</a>
+								</div>
+							</td>
+							<td class="ad_addItemConTd_5" value="{$ad[ad_default]}"> 
+								<div class="ad_addItemConTd_5_div">默认地址</div>
+								<a class="ad_addItemConTd_5_a" href="javacript:void(0)">设为默认</a>
+							</td>
+						</tr>
+					</foreach>
+					</table>
+					<div class="ad_addTitle">已经保存&nbsp{$count}&nbsp条地址,最多可以保存&nbsp10&nbsp条地址</div>	
+				</div>
+				<div class="ad_addAppend">
+					<div class="ad_addAppendButton" >
+						新增地址
+					</div>
+					<div class="ad_addAppendEdit">
+						<form action="" method="post">
+							<p class="ad_addAppendEditP_1">
+								<span>详细地址&nbsp:</span>
+								<textarea  name="ad_address" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息" rows="4" cols="80"></textarea>
+							</p>
+							<p class="ad_addAppendEditP_2">
+								<span>收货人姓名&nbsp:</span>
+								<input type="text" name="ad_consignee" placeholder="长度不超过25个字符">
+							</p>
+							<p class="ad_addAppendEditP_3">
+								<span>电话&nbsp:</span>
+								<input type="text" name="ad_phone" placeholder="填写电话/手机号码">
+							</p>
+							<p class="ad_addAppendEditP_4">
+								<button type="button" class="editP_4_button">保存</button>
+								&nbsp
+								<input type="reset" class="editP_4_reset" name=""  value="重置">
+								 <p class="editP_4_p">
+								 	<span class="editP_4_p_span">是否设为默认&nbsp:&nbsp</span>
+								 	<if condition="$address eq array()" >
+								 		<input type="checkbox" class="editP_4_p_box" name="" disabled="true" checked>
+								 		<else/>
+								 		<input type="checkbox" class="editP_4_p_box" name="" >
+								 	</if>
+								 		
+								 </p>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/member.js"></script>
+<script src="__PUBLIC__/Home/js/member_address.js"></script>
+</html>

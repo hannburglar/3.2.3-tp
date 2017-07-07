@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.detail"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="detail">
+	<div id="detail">
+<!--_________topSide___上边栏____分类___________-->		
+		<div class="topSide">
+			<ul>
+				<ol><i class="fa fa-home">&nbsp</i>首页</ol>
+				&nbsp>&nbsp<li>所有分类</li>
+				<foreach name="bread" item="br">	
+					&nbsp>&nbsp<li><a href="{:U('Home/Goods/goods')}?cat_id={$br[1]}">{$br[0]}</a></li>
+				</foreach>
+				&nbsp>&nbsp<li>{$goods['goods_name']}</li>
+			</ul>
+		</div>
+<!--_________goodsSummary___商品大纲_______________-->			
+		<div class="goodsSummary">
+			<div class="goodsImg">
+				<div class="bigImgDiv">    
+        			<img  class="bigImg" 	src="{$goods['goods_img']}">
+        		</div>
+        		<div class="smallImgDiv">
+				    <img  class="smallImage"  src="{$goods['thumb_img']}" bigImageURL="{$goods['goods_img']}">
+				    
+       			</div>
+       			<div class="goodsCollect">
+					<div  class="collecting"><i class="fa fa-star"></i>&nbsp收藏</div>
+					<div  class="sharing"><i class="fa fa-share"></i>&nbsp分享</div>
+       			</div>
+			</div>
+			<div class="goodsSynopsis">
+				<div class="synopsisTitle">
+					 {$goods['goods_name']}
+				</div>
+				<div class="synopsisSmallTitle">
+					 {$goods['goods_title']}
+				</div>
+				<div class="synopsisPrcie">
+					商城价&nbsp:&nbsp<i class="fa fa-rmb">&nbsp{$goods['shop_price']}</i>
+				</div>
+				<div class="city">
+					配送至&nbsp&nbsp&nbsp全国
+				</div>
+				<div class="synopsisSelect">
+					<div>包装&nbsp:&nbsp
+						<span>1盒</span>
+					</div>
+					<div>规格&nbsp:&nbsp
+						<span>15克×20袋/盒</span>
+					</div>
+				</div>
+				<div class="synopsisQuantity">
+					<div class="quantityDiv">
+						<span class="quantitySpan">
+							购买数量&nbsp:&nbsp
+						</span>
+						<div class="quantityInput">
+							<input type="text" name="quantity" id="quantity" value="1" >
+						</div>
+					</div>	
+					<div class="quantityBottom">
+						<span>+</span>
+						<span>-</span>
+					</div>
+					<span class="stock">(库存999件)</span>
+				</div>
+				<div class="synopsisBottom">
+					<button class="BottomBuy">
+						立即购买
+					</button>
+					<button class="BottomCart" value="{$goods['goods_id']}">
+						<i class="fa fa-shopping-cart"></i>
+						&nbsp加入购物车
+					</button>
+					<div class="BottomDiv"></div>
+				</div>
+			</div>
+			<div class="goodsNotice">
+				<div class="noticeQRcode"><img src="__PUBLIC__/Home/images/qrcode.jpg"></div>
+				<div class="noticeBoard">欢迎光临欢迎光临欢迎光临</div>
+			</div>
+		</div>
+<!--_________leftSide_______左边栏___________-->		
+		<div class="leftSide">
+			<div class="sercenter">
+				<div class="one">&nbsp&nbsp&nbsp&nbsp&nbsp在线客服</div> 
+				<div class="two">&nbsp&nbsp&nbsp&nbsp&nbsp<i class=" fa fa-qq">&nbsp:&nbsp</i>客服</div>
+				<div class="three">&nbsp&nbsp<i class="fa fa-clock-o"></i>&nbsp工作时间</div>
+				<div class="four">&nbsp&nbsp&nbsp&nbsp&nbsp周一至周六&nbsp:&nbsp9:30-17:30</div>
+				<div class="five">&nbsp&nbsp<i class="fa fa-commenting"></i>&nbsp联系方式</div>
+				<div class="six">&nbsp&nbsp&nbsp&nbsp&nbsp电话&nbsp:&nbsp400-666-666</div>
+			</div>
+			<div class="goodsSearchbar">
+				<div>
+					商品搜索
+				</div>
+				<div>
+					<form action="">
+						<input type="text" name="" id="">
+						<input type="submit" name="" value="搜索">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="rightSide">
+			<div class="sort">
+				<div class="sortNav">
+					<li id="sortNav01">商品详情</li>
+					<li id="sortNav02">商品评价</li>
+					<ol class="sortNavEmpty"></ol>
+				</div>
+			</div>	
+			<div class="itemNumber">
+				<li id="itemNumber01">
+					商家货号&nbsp:&nbsp海底00001
+				</li>	
+				<li id="itemNumber02">
+					品牌&nbsp:&nbsp海底壹号
+				</li>	
+			</div>
+			<div class="goodsDetail">
+				{$desc}
+			</div>
+		</div>
+	</div>	
+</div>		
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/detail.js"></script>
+</html>

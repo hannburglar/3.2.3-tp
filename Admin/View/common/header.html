@@ -1,0 +1,25 @@
+<!--____________________页头栏(顶部)___________________-->
+	
+	<header>
+		<div id="header">
+			<div class="header-left">
+				<ul>
+					<if condition="checkSession()">
+						<li>Hi!欢迎&nbsp<a href="{:U('Home/Member/member_order')}"><b>{$Think.session.user}</b></a</li>
+						<li><a href="{:U('Home/Login/loginout')}">退出</a></li>
+					<else /> 
+						<li><a href="{:U('Home/Login/login')}">登陆</a></li>
+						<li><a href="{:U('Home/Register/register')}">注册</a></li>
+					</if>
+				</ul>
+			</div>
+			<div class="header-right">
+				<ul>
+					<li class="header-right_li_1"><a href="{:U('Home/Shopcart/shopcart')}">购物车&nbsp<b class="header-right_li1_b"></b>&nbsp件</a></li>
+					<li><a href="{:U('Home/Member/member_order')}">我的订单</a></li>
+					<li><a href="">我的收藏</a></li>
+					<li><a href="">客户服务</a></li>
+				</ul>
+			</div>
+		</div>	
+	</header>

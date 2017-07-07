@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<import type='css' file="Home.css.common.init"/>	<!--引入css初始化-->
+	<import type='css' file="font-awesome.css.font-awesome"/>	<!--引入FontAwseome字体-->
+	<import type='css' file="Home.css.common.header"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.search_nav"/>	<!--引入公共头部CSS-->
+	<import type='css' file="Home.css.common.footer"/>	<!--引入公共尾部CSS-->
+	<import type='css' file="Home.css.login"/>	<!--引入index部分CSS-->
+	<title>MyShop</title>
+</head>
+<body>
+<div class="form">
+	<div id="form">
+		<form action="" method="post">
+			<i class="fa fa-user" id="iUser"></i>
+			<i class="fa fa-key"   id="iKey"></i>
+			<input type="text" name="user" placeholder="账户" id="user" autofocus>
+			<input type="password" name="password" placeholder="密码" id="password">	
+			<input type="text" name="checkcode" placeholder="验证码" id="checkcode">
+			<img src="{:U('verify',array())}" id="imgcheckcode"  >	
+			<button type="submit" >登&nbsp陆</button>
+			<input type="hidden" name="referrer" class="referrer" > 
+			
+
+			<a href="">找回密码></a>
+			<a href="{:U('Home/Register/register')}">免费注册></a>
+		
+		</form>
+		<div class="prompt">
+			<span class="checkerror" >验证码错误</span>
+			<span class="checktick" >✔</span>
+		</div>	
+	</div>
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/common/header.js"></script>
+<script src="__PUBLIC__/Home/js/login.js"></script>
+</html>
